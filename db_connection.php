@@ -12,6 +12,7 @@ function open_connection(){
     if (mysqli_connect_error()) {
         die("<p align='center'>Database connection failed:  . mysqli_connect_error()</p>");
     }
+//    else
 //    echo "<p align='center'> Connected successfully </p>";
 
     $sql = /** @lang text */
@@ -42,8 +43,17 @@ function insert_new_post($header_topic,$text, $conn){
     }
 }
 
+function delete_post($id, $conn){
+    $sql = "DELETE FROM Diary WHERE id='$id'";
+    if(mysqli_query($conn, $sql)){
+        echo "<h3><p align='center'> Post deleted successfully. </p></h3>";
+    } else{
+        echo "<p align='center'>ERROR: Could not able to execute $sql . mysqli_error($conn) </p>";
+    }
+}
+
 function get_all_posts($conn){
-    $sql = "SELECT header_topic, text FROM Diary";
+    $sql = "SELECT header_topic, text, id FROM Diary ORDER BY id DESC";
     return $conn->query($sql);
 
 

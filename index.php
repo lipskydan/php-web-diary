@@ -17,19 +17,29 @@ if ($result->num_rows > 0) {
                     <aside class='col-sm-10'>
                         <div class='card' style='background-color:#e3f2fd'>
                             <article class='card-body'>
-                                <table align="center" border="0" width="100%">
+                                <table align="center" border="1" width="100%">
                                     <tr>
-                                        <td>
+                                        <td colspan="2">
                                             <p align="center">
                                                 Topic: <?=$row["header_topic"]?>
                                             </p>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td colspan="2">
                                             <p align="justify">
                                                 <?=$row["text"]?>
                                             </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td width="50%" align="center">
+                                            <form method="get">
+                                                <a class="btn btn-outline-primary btn-block" href="delete.php?id=<?php echo $row["id"];?>">Delete</a>
+                                            </form>
                                         </td>
                                     </tr>
                                 </table>
@@ -46,6 +56,7 @@ if ($result->num_rows > 0) {
 
     close_connection($conn);
 ?>
+
 
 
 <?php
